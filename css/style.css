@@ -1,0 +1,449 @@
+/*Richard Carr- 2305843*/
+/* 1. VARIABLES ----------------------------------------------------------- */
+:root {
+  --neutral-0: hsl(0, 0%, 100%);
+  --neutral-300: hsl(252, 6%, 83%);
+  --neutral-500: hsl(245, 15%, 58%);
+  --neutral-700: hsl(245, 19%, 35%);
+  --neutral-900: hsl(248, 70%, 10%);
+  --orange-500: hsl(7, 88%, 67%);
+  --orange-700: hsl(7, 71%, 60%);
+  --error: hsl(7, 100%, 78%);
+  --font-main: "Inconsolata", "Courier New", monospace;
+
+  --text-body: 1.125rem;
+  --text-h1: 2rem;
+  --text-h2: 1.5rem;
+  --space: 1rem;
+
+  --radius: 0.75rem;
+  --glass-bg: hsla(0, 0%, 100%, 0.1);
+  --glass-border: hsla(0, 0%, 100%, 0.35);
+}
+
+/* 2. BASE ---------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-main);
+  font-size: var(--text-body);
+  line-height: 1.5;
+  color: var(--neutral-0);
+  background: var(--neutral-900) url("../assets/images/background-mobile.png") center top / cover no-repeat;
+}
+
+:where(h1, h2, h3, p, ul) {
+  margin: 0;
+}
+
+h1 {
+  font-size: var(--text-h1);
+  line-height: 1.15;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: var(--text-h2);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Gradient text for key word headings */
+.gradient-text {
+  background: linear-gradient(90deg, var(--orange-500), var(--neutral-0));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.lead {
+  color: var(--neutral-300);
+  max-width: 40ch;
+}
+
+:is(a, button, input):focus-visible {
+  outline: 3px solid var(--orange-500);
+  outline-offset: 3px;
+}
+
+
+.skip-link {
+  position: absolute;
+  top: -4rem;
+  left: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--neutral-0);
+  color: var(--neutral-900);
+  z-index: 10;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* 3. LAYOUT -------------------------------------------------------------- */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: var(--space);
+}
+
+.logo {
+  display: block;
+  width: 9rem;
+}
+
+.nav-list {
+  display: flex;
+  gap: 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-list a {
+  color: var(--neutral-0);
+  text-decoration: none;
+  padding-block: 0.25rem;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.nav-list a:is(:hover, [aria-current="page"]) {
+  border-bottom-color: var(--orange-500);
+}
+
+main {
+  flex: 1;
+  display: grid;
+  gap: calc(var(--space) * 2);
+  width: min(100%, 70rem);
+  margin-inline: auto;
+  padding: var(--space);
+}
+
+:is(.hero, .form-section, .confirm-section) {
+  display: grid;
+  gap: var(--space);
+  justify-items: center;
+  text-align: center;
+}
+
+.site-footer {
+  padding: var(--space);
+  text-align: center;
+  color: var(--neutral-300);
+  font-size: 1rem;
+}
+
+/* 4. COMPONENTS ---------------------------------------------------------- */
+.event-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 2rem;
+}
+
+/* Main call-to-action button / link */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--orange-500);
+  color: var(--neutral-900);
+  font: inherit;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 0 var(--orange-700);
+  transition: transform 0.15s, background-color 0.15s;
+}
+
+.btn:hover {
+  background: var(--orange-700);
+  transform: translateY(-3px);
+}
+
+/* Overview cards on the landing page */
+.overview {
+  display: grid;
+  gap: var(--space);
+  text-align: center;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: var(--space);
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  padding: var(--space);
+  text-align: left;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card h3 {
+  margin-bottom: 0.5rem;
+  color: var(--orange-500);
+}
+
+/* Registration form */
+form {
+  display: grid;
+  gap: var(--space);
+  width: min(100%, 28rem);
+  text-align: left;
+}
+
+.field {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.field input[type="text"] {
+  padding: 0.75rem 1rem;
+  font: inherit;
+  color: var(--neutral-0);
+  background: var(--glass-bg);
+  border: 1px solid var(--neutral-500);
+  border-radius: var(--radius);
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.field input[type="text"]:hover {
+  background: hsla(0, 0%, 100%, 0.18);
+}
+
+.field input::placeholder {
+  color: var(--neutral-300);
+}
+
+
+.field :is(input, .upload-box)[aria-invalid="true"],
+.field:has(input[aria-invalid="true"]) .upload-box {
+  border-color: var(--error);
+}
+
+.upload-box {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  text-align: center;
+  background: var(--glass-bg);
+  border: 2px dashed var(--neutral-500);
+  border-radius: var(--radius);
+  transition: background-color 0.2s;
+}
+
+.upload-box:hover {
+  background: hsla(0, 0%, 100%, 0.18);
+}
+
+
+/* The real file input covers the box so it stays keyboard and screen reader accessible */
+.upload-box input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.upload-box:has(input:focus-visible) {
+  outline: 3px solid var(--orange-500);
+  outline-offset: 3px;
+}
+
+.hint,
+.error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+}
+
+.hint {
+  color: var(--neutral-300);
+}
+
+.error {
+  color: var(--error);
+  font-weight: 700;
+}
+
+
+.error:empty {
+  display: none;
+}
+
+/* 5. TICKET -------------------------------------------------------------- */
+.ticket {
+  position: relative;
+  width: min(100%, 36rem);
+  padding: var(--space);
+  text-align: left;
+  background: var(--glass-bg) url("../assets/images/pattern-ticket.svg") center / cover no-repeat;
+  border: 1px solid var(--glass-border);
+  border-radius: calc(var(--radius) * 1.5);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 1rem 3rem hsla(248, 70%, 4%, 0.6);
+  animation: ticket-in 0.6s ease-out;
+}
+
+.ticket-logo {
+  width: 10rem;
+}
+
+.ticket-meta {
+  margin-top: 0.5rem;
+  color: var(--neutral-300);
+}
+
+
+.attendee {
+  margin-top: var(--space);
+}
+
+.attendee::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.avatar {
+  float: left;
+  width: 4rem;
+  height: 4rem;
+  margin-right: 1rem;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.attendee-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.attendee-github {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--neutral-300);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.attendee-github:hover {
+  color: var(--orange-500);
+  text-decoration: underline;
+}
+
+
+.ticket-serial {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: var(--neutral-500);
+  font-weight: 700;
+}
+
+
+
+/* 6. RESPONSIVE + USER PREFERENCES --------------------------------------- */
+
+/* Tablet and up: larger text, spacing and logo, plus the tablet background */
+@media (min-width: 48em) {
+  :root {
+    --text-body: 1.25rem;
+    --text-h1: 2.75rem;
+    --text-h2: 2rem;
+    --space: 1.5rem;
+  }
+
+  body {
+    background-image: url("../assets/images/background-tablet.png");
+  }
+
+  .logo {
+    width: 12rem;
+  }
+}
+
+/* Desktop: largest heading and spacing, plus the desktop background */
+@media (min-width: 80em) {
+  :root {
+    --text-h1: 3.5rem;
+    --space: 2rem;
+  }
+
+  body {
+    background-image: url("../assets/images/background-desktop.png");
+  }
+}
+
+/* Respect users who ask for less motion */
+@media (prefers-reduced-motion: reduce) {
+  :where(*, *::before, *::after) {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+/* Print: hide page chrome so only the confirmation and ticket are printed */
+/* Print: switch to a light page with dark text, and hide page chrome */
+@media print {
+  /* Swap the light-on-dark palette for dark-on-light */
+  :root {
+    --neutral-0: hsl(248, 70%, 10%);
+    --neutral-300: hsl(245, 19%, 35%);
+    --neutral-500: hsl(245, 19%, 35%);
+    --glass-border: hsl(245, 19%, 35%);
+  }
+
+  body {
+    min-height: 0;
+    background: none;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .ticket {
+    background-color: #fff;
+    box-shadow: none;
+    animation: none;
+  }
+
+  :is(.site-header, .site-footer, .skip-link, .lead, .btn) {
+    display: none;
+  }
+}

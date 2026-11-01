@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--  login.html - Registration form for Coding Conf 2026. -->
+<!--Richard Carr- 2305843-->
+  
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coding Conf 2026 | Register</title>
+  <link rel="icon" href="assets/images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;700;800&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <a href="index.html"><img class="logo" src="assets/images/logo-full.svg" alt="Coding Conf, go to home page"></a>
+    <nav aria-label="Main navigation">
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="login.html" aria-current="page">Register</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="form-section" aria-labelledby="form-title">
+      <h1 id="form-title">Get your <span class="gradient-text">free ticket</span></h1>
+      <p class="lead">Fill in your details and we will build your ticket.</p>
+
+      <!-- novalidate: all checks are done in js/validation.js so errors appear inside the page -->
+      <form id="registration-form" novalidate>
+
+        <div class="field">
+          <label for="avatar">Upload avatar</label>
+          <div class="upload-box">
+            <img src="assets/images/icon-upload.svg" alt="" width="32" height="32">
+            <span id="avatar-text">Click or press Enter to choose an image</span>
+            <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"
+                   aria-describedby="avatar-hint avatar-error">
+          </div>
+          <p class="hint" id="avatar-hint">
+            <img src="assets/images/icon-info.svg" alt="" width="16" height="16">
+            Upload your photo (JPG or PNG, max size: 500KB).
+          </p>
+          <p class="error" id="avatar-error" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="name">Full name</label>
+          <input type="text" id="name" name="name" autocomplete="name" aria-describedby="name-error">
+          <p class="error" id="name-error" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="email">Email address</label>
+          <input type="text" id="email" name="email" autocomplete="email" inputmode="email"
+                 placeholder="example@email.com" aria-describedby="email-error">
+          <p class="error" id="email-error" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="github">GitHub username</label>
+          <input type="text" id="github" name="github" placeholder="@yourusername"
+                 autocomplete="off" aria-describedby="github-error">
+          <p class="error" id="github-error" role="alert"></p>
+        </div>
+
+        <button type="submit" class="btn">Generate My Ticket</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Coding Conf. CIT2011 Web Programming, IA#2.</p>
+  </footer>
+
+  <script src="js/validation.js"></script>
+</body>
+</html>

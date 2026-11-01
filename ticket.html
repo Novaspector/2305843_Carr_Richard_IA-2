@@ -1,0 +1,66 @@
+<!--Richard Carr- 2305843-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coding Conf 2026 | Your Ticket</title>
+  <link rel="icon" href="assets/images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;700;800&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <a href="index.html"><img class="logo" src="assets/images/logo-full.svg" alt="Coding Conf, go to home page"></a>
+    <nav aria-label="Main navigation">
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="login.html">Register</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="confirm-section" aria-labelledby="confirm-title">
+      <h1 id="confirm-title">Congrats, <span class="gradient-text" id="out-name-heading"></span>! Your ticket is ready.</h1>
+      <p class="lead">We have saved your ticket for <strong id="out-email"></strong>. Show it at the door on the day.</p>
+
+      <article class="ticket" aria-label="Conference ticket">
+        <div class="ticket-main">
+          <img class="ticket-logo" src="assets/images/logo-full.svg" alt="Coding Conf">
+          <p class="ticket-meta">
+            <time datetime="2026-10-26">Oct 26, 2026</time> / Papine, Kgn
+          </p>
+
+          <div class="attendee">
+            <img class="avatar" id="out-avatar" src="assets/images/image-avatar.jpg" alt="Profile picture of the attendee" width="64" height="64">
+            <p class="attendee-name" id="out-name"></p>
+            <a class="attendee-github" id="out-github" href="https://github.com/" target="_blank" rel="noopener">
+              <img src="assets/images/icon-github.svg" alt="" width="20" height="20">
+              <span id="out-github-text"></span>
+            </a>
+          </div>
+        </div>
+        <p class="ticket-serial" aria-label="Ticket number"><span id="out-serial"></span></p>
+      </article>
+
+      <a class="btn" href="index.html">Back to home</a>
+      <button type="button" class="btn" id="print-btn">Print or save ticket</button>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Coding Conf. CIT2011 Web Programming, IA#2.</p>
+    <p>&copy; R. Carr 2026</p>
+  </footer>
+
+  <script src="js/ticket.js"></script>
+</body>
+</html>
